@@ -189,7 +189,7 @@ async def start_updates(lines: list[str]):
         await task
 
 def upgrade_to_ypkgupgr():
-    if ran_from_script and os.name == "win32":
+    if ran_from_script and sys.platform == "win32":
         print(f"Unable to upgrade to ypkgupgr. Please run \"{sys.executable} -m yesserpackageupdater\" to upgrade.\nDon't worry, you'll still be able to use the yesserpackageupdater script!")
     else:
         print("Upgrading to ypkgupgr...")
