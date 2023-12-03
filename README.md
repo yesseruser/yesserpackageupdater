@@ -1,6 +1,8 @@
 # yesserpackageupdater
 ## The pip package updater by yesseruser
 
+**This package was renamed and moved to https://github.com/yesseruser/ypkgupgr, this repository is an archive of the old package. It will automatically upgrade to ypkgupgr since version 1.8.1.1.**
+
 This is a package updater that updates all outdated packages when run.  
 
 To install, follow the steps listed here:  
