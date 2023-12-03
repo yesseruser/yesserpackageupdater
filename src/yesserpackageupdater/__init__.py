@@ -188,6 +188,16 @@ async def start_updates(lines: list[str]):
     for task in tasks:
         await task
 
+def upgrade_to_ypkgupgr():
+    if ran_from_script and os.name == "win32":
+        print(f"Unable to upgrade to ypkgupgr. Please run \"{sys.executable} -m yesserpackageupdater\" to upgrade.\nDon't worry, you'll still be able to use the yesserpackageupdater script!")
+    else:
+        print("Upgrading to ypkgupgr...")
+        subprocess.run({sys.executable}, "-m", "pip", "uninstall", "yesserpackageupdater")
+        subprocess.run({sys.executable}, "-m", "pip", "install", "ypkgupgr")
+        print("Done! You'll still be able to use the \"yesserpackageupdater\" script, but you can also use \"ypkgupgr\"!")
+        print(f"Use this to run the module: \"{sys.executable} -m ypkgupgr\"")
+
 def update_packages():
     """
         If calling from a python file, please use a subprocess instead.
@@ -222,6 +232,7 @@ def update_packages():
         progress_ring(progress = 100, complete = True)
         print("No outdated packages found.")
         logger.info("No outdated packages.")
+        upgrade_to_ypkgupgr()
         return
     
     outdated_count = len(lines)
@@ -250,9 +261,11 @@ def update_packages():
     # Warns the user if yesserpackageupdater hasn't been updated.
     if yesserpackageupdater_outdated:
         print(f'The yesserpackageupdater package is outdated, and you are using the script. Please use "{sys.executable} -m yesserpackageupdater" to update it.\n')
-        logger.info("yesserpackageupdater is outdated and the script is used on Windows.")
-    
+        logger.info("yesserpackageupdater is outdated and the script is used on Windows.")        
+
     progress_ring(progress = 100,complete = True)
+
+    upgrade_to_ypkgupgr()
 
 def update_packages_script():
     """
