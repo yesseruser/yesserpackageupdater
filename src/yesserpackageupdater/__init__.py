@@ -193,8 +193,8 @@ def upgrade_to_ypkgupgr():
         print(f"Unable to upgrade to ypkgupgr. Please run \"{sys.executable} -m yesserpackageupdater\" to upgrade.\nDon't worry, you'll still be able to use the yesserpackageupdater script!")
     else:
         print("Upgrading to ypkgupgr...")
-        subprocess.run({sys.executable}, "-m", "pip", "uninstall", "yesserpackageupdater")
-        subprocess.run({sys.executable}, "-m", "pip", "install", "ypkgupgr")
+        subprocess.run([{sys.executable}, "-m", "pip", "uninstall", "yesserpackageupdater"])
+        subprocess.run([{sys.executable}, "-m", "pip", "install", "ypkgupgr"])
         print("Done! You'll still be able to use the \"yesserpackageupdater\" script, but you can also use \"ypkgupgr\"!")
         print(f"Use this to run the module: \"{sys.executable} -m ypkgupgr\"")
 
