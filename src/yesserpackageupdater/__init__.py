@@ -192,10 +192,10 @@ def upgrade_to_ypkgupgr():
     if ran_from_script and sys.platform == "win32":
         print(f"Unable to upgrade to ypkgupgr. Please run \"{sys.executable} -m yesserpackageupdater\" to upgrade.\nDon't worry, you'll still be able to use the yesserpackageupdater script!")
     else:
-        print("Upgrading to ypkgupgr...")
+        print("Upgrading to ypkgupgr...\n")
         subprocess.run([sys.executable, "-m", "pip", "uninstall", "yesserpackageupdater", "-y"])
         subprocess.run([sys.executable, "-m", "pip", "install", "ypkgupgr"])
-        print("Done! You'll still be able to use the \"yesserpackageupdater\" script, but you can also use \"ypkgupgr\"!")
+        print(f"\n{Colors.GREEN}Done!{Colors.RESET} You'll still be able to use the \"yesserpackageupdater\" script, but you can also use \"ypkgupgr\"!")
         print(f"Use this to run the module: \"{sys.executable} -m ypkgupgr\"")
 
 def update_packages():
